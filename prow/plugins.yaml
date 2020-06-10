@@ -1,0 +1,4 @@
+plugins:
+    dzahariev/go-with-prow:
+    - size
+    - trigger

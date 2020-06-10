@@ -1,0 +1,41 @@
+--- 
+periodics: 
+  - name: periodic-job
+    decorate: true
+    interval: 1m
+    spec: 
+      containers: 
+        - image: alpine
+          command: 
+            - /bin/date          
+postsubmits: 
+  dzahariev/go-with-prow: 
+    - name: post-submit-job
+      decorate: true
+      max_concurrency: 10
+      branches: 
+        - ^master$
+      skip_branches: 
+        - ^rel-.*$
+      spec: 
+        containers: 
+          - image: alpine
+            command: 
+              - /bin/date
+presubmits: 
+  dzahariev/go-with-prow: 
+    - name: pre-submit-job
+      decorate: true
+      max_concurrency: 10
+      always_run: true
+      skip_report: true
+      run_if_changed: "*.*"
+      branches: []
+      skip_branches: []
+      trigger: "(?m)^/test this"
+      rerun_command: "/retest this"
+      spec: 
+        containers: 
+          - image: alpine
+            command: 
+              - /bin/date
