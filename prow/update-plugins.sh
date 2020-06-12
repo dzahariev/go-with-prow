@@ -2,8 +2,8 @@
 
 set -x 
 
-kubectl create configmap config \
-  --from-file=config.yaml=config.yaml --dry-run=client -o yaml | kubectl replace configmap config -f -
+kubectl create configmap plugins \
+  --from-file=plugins.yaml=plugins.yaml --dry-run=client -o yaml | kubectl replace configmap plugins -f -
 
 kubectl scale deploy hook --replicas=0
 kubectl scale deploy plank --replicas=0
