@@ -42,4 +42,4 @@ presubmits:
 plank:
   job_url_prefix_config:
     ‘*’: http://192.168.64.77:30250/
-  job_url_template: http://192.168.64.77:30250/log?job={{.Spec.Job}}&id={{.Status.BuildID}}’
+  job_url_template: http://192.168.64.77:30250/log?job={{.Spec.Job}}&id={{.Status.BuildID}}
