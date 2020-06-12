@@ -38,7 +38,7 @@ presubmits:
         - image: golang:alpine
           command: ["/bin/sh","-c"]
           args:
-           - echo "update"; apk update; echo "upgrade"; apk upgrade; echo "install git"; apk add --no-cache git openssh build-base gcc abuild binutils; echo "checkout repo"; go get github.com/$(REPO_OWNER)/$(REPO_NAME); echo "navigate to source"; cd /go/src/github.com/$(REPO_OWNER)/$(REPO_NAME); echo "fetch"; git fetch origin pull/$(PULL_NUMBER)/head:pr_$(PULL_NUMBER); echo "checkout the PR"; git checkout pr_$(PULL_NUMBER); echo "execute tests"; go test ./...;
+           - echo "update"; apk update; echo "upgrade"; apk upgrade; echo "install git"; apk add --no-cache git openssh build-base gcc abuild binutils; echo "checkout repo"; go get github.com/$(REPO_OWNER)/$(REPO_NAME); echo "navigate to source"; cd /go/src/github.com/$(REPO_OWNER)/$(REPO_NAME); echo "fetch"; git fetch origin pull/$(PULL_NUMBER)/head:pr_$(PULL_NUMBER); echo "checkout the PR"; git checkout pr_$(PULL_NUMBER); echo "execute tests"; go test -ginkgo.noColor -v ./...;
 plank:
   job_url_prefix_config:
     ‘*’: http://192.168.64.77:30250/
