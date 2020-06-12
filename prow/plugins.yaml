@@ -1,0 +1,10 @@
+plugins:
+    dzahariev/go-with-prow:
+    - cat # /meow replies with cat pictures
+    - dog # /bark replies with dog pictures
+    - help  # Support /help and /good-first-issue
+    - lgtm  # Allow /lgtm
+    - size  # Auto-label size of PR
+    - trigger  # Allow people to configure CI jobs to /test
+    - yuks # Let prow tell a /joke
+  
